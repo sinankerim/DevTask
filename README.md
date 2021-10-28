@@ -1,4 +1,4 @@
-# DevTask beta v1.0
+# DevTask Beta
 You better not forget your tasks
 
 here's a live demo in a temporary sub domain
