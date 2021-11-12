@@ -1,19 +1,12 @@
-# devtask
+# DevTask
+# DevTask beta v1.0
+You better not forget your tasks
 
-## Project setup
-```
-npm install
-```
+here's a live demo in a temporary sub domain
+http://devtask.sinankerim.com
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+The purpose of using DevTask is to give you a useful system for taking notes, listing tasks and control them with an understandable basic UI.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+New features coming out!
+Here's a peek for a few new features from my tasks:
+![DevTask](https://user-images.githubusercontent.com/45585688/139223116-c172d981-f2a1-4d7c-9f72-b7dd46d4c0fa.png)
