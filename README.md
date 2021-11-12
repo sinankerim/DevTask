@@ -2,7 +2,7 @@
 # DevTask beta v1.1
 You better not forget your tasks
 
-here's a live demo in a temporary sub domain
+here's a live demo: 
 http://devtask.sinankerim.com
 
 The purpose of using DevTask is to give you a useful system for taking notes, listing tasks and control them with an understandable basic UI.
