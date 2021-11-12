@@ -40,7 +40,7 @@
             <ol class="list-group">
               <li class="list-group-item bg-warning text-dark rounded-3">
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="askBeforeRemoveCheckBox" v-model="askBeforeRemove">
+                  <input class="form-check-input" type="checkbox" role="switch" id="askBeforeRemoveCheckBox" v-model="askBeforeRemove" checked>
                   <label class="form-check-label fw-bold" for="askBeforeRemoveCheckBox">Ask before removing task {{askBeforeRemove}}</label>
                 </div>
               </li>
@@ -66,7 +66,7 @@
 export default {
     data:()=>{
         return{
-          askBeforeRemove:false
+          askBeforeRemove:true
         }
     },
     methods:{
@@ -78,15 +78,10 @@ export default {
     },
     watch:{
       askBeforeRemove(){
-        localStorage.askBeforeRemove=this.askBeforeRemove;
-        alert(localStorage.askBeforeRemove);
         this.setABRStatus();
       }
     },
     mounted(){
-        if(localStorage.askBeforeRemove){
-          this.askBeforeRemove=localStorage.askBeforeRemove;
-        }
         this.setABRStatus();
     }
 }
