@@ -1,6 +1,10 @@
 <template><div>
 
-<div class="align-middle con">  
+<div class="align-middle con"> 
+  <div class="d-flex">
+    <sideNav @ABRStatus="askBeforeRemove=$event"></sideNav>
+    <span class="text-light fw-bold fs-4 ms-3">DevTask <span class="fs-5 fw-normal text-secondary ms-2 fst-italic">you better not forget your tasks!</span></span>
+  </div>
   <table class="table table-hover table-dark">
       <tbody>
       <tr>
@@ -13,11 +17,12 @@
           <td class="w-25 text-center">
 
             <!-- Ask before delete task -->
-            <button v-show="removeSwitch" id="askMe" class="bg-danger text-white rounded-circle border-0" data-toggle="modal" data-target="#taskDeleteModal" @click="setNLTI(index,task); removeTask();"><i class="fas fa-minus"></i></button>
+            <button v-show="askBeforeRemove" id="askMe" class="bg-danger text-white rounded-circle border-0" data-bs-toggle="modal" data-bs-target="#taskDeleteModal" @click="setTaskNameForModalChild(task); setNLTI(index,task);"><i class="fas fa-minus"></i></button>
             <!-- don't ask before delete -->
-            <button v-show="!removeSwitch" id="dontAskMeIDK" class="bg-danger text-white rounded-circle border-0" @click="removeWithoutAsking(index);"><i class="fas fa-minus"></i></button>
+            <button v-show="!askBeforeRemove" id="dontAskMeIDK" class="bg-danger text-white rounded-circle border-0" @click="setNLTI(index,task); removeTask();"><i class="fas fa-minus"></i></button>
                                 
           </td>
+          <taskDeleteModal :taskName="taskNameForModalChild"></taskDeleteModal>
       </tr>
       </tbody>
   </table>
@@ -27,28 +32,20 @@
 </div></template>
 
 <script>
+import taskDeleteModal from "./components/deleteModal.vue";
+import sideNav from "./components/sideNav.vue";
 export default {
-  
 data:function(){
     return {
       tasks:[],
         newTask:null,
         logged:false,
         NLTI:null,
-        removeSwitch:true
+        askBeforeRemove:false,
+        taskNameForModalChild:null
     }
   }
-,
-mounted(){
-  if (localStorage.getItem('tasks')) {
-      try {
-        this.tasks = JSON.parse(localStorage.getItem('tasks'));
-      } catch(e) {
-        localStorage.removeItem('tasks');
-      }
-    }
-},
-methods:{
+,methods:{
         setNLTI(index){
             this.NLTI=index;
         },
@@ -77,8 +74,23 @@ methods:{
         saveTasks() {
             const parsed = JSON.stringify(this.tasks);
             localStorage.setItem('tasks', parsed);
+        },
+        setTaskNameForModalChild(task){
+          this.taskNameForModalChild=task;
         }
+    },
+  components:{
+    "taskDeleteModal":taskDeleteModal,
+    "sideNav":sideNav
+  },mounted(){
+  if (localStorage.getItem('tasks')) {
+      try {
+        this.tasks = JSON.parse(localStorage.getItem('tasks'));
+      } catch(e) {
+        localStorage.removeItem('tasks');
+      }
     }
+}
 
 }
 </script>
