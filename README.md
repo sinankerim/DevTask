@@ -9,9 +9,9 @@ The purpose of using DevTask is to give you a useful system for taking notes, li
 
 New features coming with DevTask beta v1.1
 
--Some cool UI changes
--Now you can add your task by pressing "Enter" key
--Side bar added
+-Some cool UI changes <br>
+-Now you can add your task by pressing "Enter" key <br>
+-Side bar added <br>
 -Asking before removing tasks is now optional
 
 More features coming out! Check me later...
